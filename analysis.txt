@@ -1,0 +1,32 @@
+The purpose of the DynamicArray.c was to implement a Dynamic Array date type t
+hat allowed for modified struct Data for payload applications and to allow for
+ growth/modification of DArrays. This was meant to demonstrate the concepts of
+ data structure design, memory management, and memory safety within C coding. 
+The DArray utilized within the C file is based from the DynamicArray.h file, w
+hich contains variables to store data such as the capacity, number of entries,
+ and the payload pointer that's used within the memory block for storing data 
+structures.
+The 3 implementations that were done inside of DynamicArray.c include CreateDA
+rray,  PushtoDArray, and DestroyDArray. CreateDArray is used to allocate memor
+y and initialize the DArray state. This is done by first setting the number of
+ entries to 0 and setting the capacity based on the initial size inputted. The
+n based on the capacity allocated memory storage (if initial size is greater t
+han 0), allocation is performed by setting the payload to the size of the Data
+ struct. Otherwise the payload is set to null and no allocation is needed. An 
+error checker is used to ensure that the memory reallocation didn’t fail by se
+eing if the payload is set to 0. The next function PushtoDArray is used for va
+rying dataset sizes, as it allows for adding data to the end of a dynamic arra
+y and updating the state within the array header, along with ensuring that mem
+ory reallocation is done if it's full. This rearranging is first done by check
+ing if the array needs to be larger, and then moves on to increasing the Paylo
+ad and Capaity based on the growth amount given and the size of the new data w
+ithin it using temporary variables to ensure safety. An error check is done to
+ see if the memory reallocation is done before setting the new payload and cap
+acity values. Afterwards, the data from PayloadPtr is copied into the dynamic 
+array from the index in EntriesUsed, and the function increments the number of
+ elements used and returns the index of the last element inserted. The last fu
+nction DestoryDArray prevents memory leaks and unsed pointers by resetting the
+ DArray values of entries and capacity back to 0, and then releasing the heap 
+memory back to the system using the free command and setting payload to NULL. 
+Overall the DynamicArray.c displayed full functionality for manipulating Dynam
+ic Arrays and all functions worked as intended when testing.
